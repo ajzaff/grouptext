@@ -1,0 +1,12 @@
+body {
+	margin: 0px;
+}
+
+div#header {
+	height: 70px;
+	padding: 20px;
+	background-image: url("../images/logo-nobg-white.png");
+	background-repeat: no-repeat;
+	background-position: 20px 20px;
+	background-color: #4285f4;
+}

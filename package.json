@@ -4,12 +4,15 @@
   "description": "A platform for group collaboration",
   "main": "app.js",
   "dependencies": {
+    "ejs": "^2.5.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "bugs": "https://github.com/groupol/groupol/issues",
+  "bugs": {
+    "url": "https://github.com/groupol/groupol/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/groupol/groupol.git"
@@ -20,8 +23,5 @@
   ],
   "author": "Alan J. Zaffetti",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/groupol/groupol/issues"
-  },
   "homepage": "https://github.com/groupol/groupol#readme"
 }
