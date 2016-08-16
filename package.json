@@ -1,0 +1,17 @@
+{
+  "name": "groupol",
+  "version": "1.0.0",
+  "description": "A platform for group collaboration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": "https://github.com/groupol/groupol/issues",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/groupol/groupol"
+  },
+  "readme": "README.md",
+  "author": "Alan J. Zaffetti",
+  "license": "ISC"
+}
