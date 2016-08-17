@@ -1,5 +1,5 @@
 {
-  "name": "groupshare",
+  "name": "grouptext",
   "version": "1.0.0",
   "description": "A platform for group collaboration",
   "main": "app.js",
@@ -11,17 +11,17 @@
     "start": "node app.js"
   },
   "bugs": {
-    "url": "https://github.com/groupshare/groupshare/issues"
+    "url": "https://github.com/grouptext/grouptext/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/groupshare/groupshare.git"
+    "url": "git+https://github.com/grouptext/grouptext.git"
   },
   "keywords": [
     "group",
-    "collaboration"
+    "coordination"
   ],
   "author": "Alan J. Zaffetti",
   "license": "ISC",
-  "homepage": "https://github.com/groupshare/groupshare#readme"
+  "homepage": "https://github.com/grouptext/grouptext#readme"
 }
