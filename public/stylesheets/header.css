@@ -1,12 +1,36 @@
+/**
+ * global style configuration for body
+ */
+
 body {
-	/* margin: 0px; */
+	margin: 0px;
 }
 
-div#header {
-	height: 40px;
-	padding: 10px;
-	background-image: url("../images/logo-nobg.png");
+/**
+ * Main header for splash pages
+ */
+
+.navbar {
+	height: 100px;
+}
+
+/**
+ * the logo used in the navbar
+ */
+
+.navbar-logo {
+	background-image: url("../images/icon-g.png");
 	background-repeat: no-repeat;
-	background-position: 10px 10px;
-	/* background-color: #4285f4; */
+	float: left;
+	width: 48px;
+	height: 100px;
+}
+
+/**
+ * Container with auto margins
+ */
+
+.container {
+	margin: 0px auto;
+	width: 1170px;
 }
