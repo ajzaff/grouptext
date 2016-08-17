@@ -10,5 +10,5 @@ app.get("/", function(req, res) {
 	res.render("pages/index", { title: "Index Page", message: "Hello, app!" });
 });
 app.listen(3000, function() {
-	console.log("groupshare listening on port 3000!");
+	console.log("grouptext listening on port 3000!");
 });

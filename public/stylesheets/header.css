@@ -6,6 +6,10 @@ body {
 	margin: 0px;
 }
 
+a {
+	text-decoration: none;
+}
+
 /**
  * Main header for splash pages
  */
@@ -19,7 +23,7 @@ body {
  */
 
 .navbar-logo {
-	background-image: url("../images/icon-g.png");
+	background-image: url("../images/icon.png");
 	background-repeat: no-repeat;
 	float: left;
 	width: 48px;
