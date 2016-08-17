@@ -1,5 +1,5 @@
 {
-  "name": "groupol",
+  "name": "groupshare",
   "version": "1.0.0",
   "description": "A platform for group collaboration",
   "main": "app.js",
@@ -11,11 +11,11 @@
     "start": "node app.js"
   },
   "bugs": {
-    "url": "https://github.com/groupol/groupol/issues"
+    "url": "https://github.com/groupshare/groupshare/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/groupol/groupol.git"
+    "url": "git+https://github.com/groupshare/groupshare.git"
   },
   "keywords": [
     "group",
@@ -23,5 +23,5 @@
   ],
   "author": "Alan J. Zaffetti",
   "license": "ISC",
-  "homepage": "https://github.com/groupol/groupol#readme"
+  "homepage": "https://github.com/groupshare/groupshare#readme"
 }
