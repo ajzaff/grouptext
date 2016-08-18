@@ -1,0 +1,34 @@
+body {
+	font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	line-height: 1.1;
+	color: #040d14;
+}
+
+#lead_container {
+	padding-top: 95px;
+	padding-bottom: 50px;
+}
+
+.col-md-7 {
+	width: 50%;
+}
+
+#grouptext-title {
+	font-weight: 700;
+	color: #040d14;
+	line-height: 1.2;
+}
+
+.feature-header {
+	font-weight: 300;
+	font-size: 48px;
+	letter-spacing: -1px;
+}
+
+.grouptext-tagline {
+	margin-top: 45px;
+	color: #151f25;
+}
