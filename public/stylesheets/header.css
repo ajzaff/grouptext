@@ -43,7 +43,6 @@ a:hover {
 	list-style: none;
 }
 
-.row::before,
 .nav::before,
 .navbar::before,
 .navbar-header::before,
@@ -85,6 +84,12 @@ a:hover {
 
 .navbar .navbar-nav a {
 	text-transform: uppercase;
+}
+
+.navbar a:focus {
+	border-width: 1px;
+	border-style: dotted;
+	border-color: black;
 }
 
 .nav > li {
