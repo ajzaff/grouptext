@@ -107,6 +107,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .row {
 }
 
+.footer {
+	background-color: #373f47;
+	padding-top: 95px;
+	padding-bottom: 95px;
+}
+
+.full-footer {
+}
+
 .feature-block::before,
 .container::before,
 #lead_container::before,
