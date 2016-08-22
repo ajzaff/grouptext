@@ -3,7 +3,58 @@
  */
 
 body {
-	margin: 0px;
+	font-family: sans;	
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/**
+ * default links have no decoration
+ */
+
+a {
+	text-decoration: none;
+	color: #0371fe;
+	transition: color 0.15s;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #040d14;
+}
+
+.navbar-nav > li > a {
+	padding-top: 40.5px;
+	padding-bottom: 40.5px;
+}
+
+.nav > li > a {
+	position: relative;
+	display: block;
+}
+
+/**
+ * A navigation list
+ */
+.nav {
+	padding-left: 0px;
+	list-style: none;
+}
+
+.nav::before,
+.navbar::before,
+.navbar-header::before,
+.navbar::after {
+	content: " ";
+	display: table;
+}
+
+.nav::after,
+.navbar-header::after,
+.container::after {
+	clear: both;
 }
 
 /**
@@ -11,7 +62,54 @@ body {
  */
 
 .navbar {
-	height: 100px;
+	min-height: 100px;
+}
+
+.navbar-nav {
+	margin: 0px;
+}
+
+.navbar-nav li {
+	margin-left: 30px;
+}
+
+.navbar-nav > li {
+	margin-left: 30px;
+	float: left;
+}
+
+.navbar .navbar-nav .btn {
+	text-transform: uppercase;
+}
+
+.navbar .navbar-nav a {
+	text-transform: uppercase;
+}
+
+.navbar a:focus {
+	border-width: 1px;
+	border-style: dotted;
+	border-color: black;
+}
+
+.nav > li {
+	position: relative;
+	display: block;
+}
+
+/**
+ * The navbar for the header containing our icon
+ */
+.navbar-header {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+/**
+ * The navbar for the header containing our icon
+ */
+.navbar-right {
+	float: right !important;
 }
 
 /**
@@ -19,11 +117,21 @@ body {
  */
 
 .navbar-logo {
-	background-image: url("../images/icon-g.png");
+	background-image: url("../images/icon.png");
 	background-repeat: no-repeat;
+	background-position: center;
 	float: left;
 	width: 48px;
 	height: 100px;
+}
+
+.navbar-button-item {
+	position: relative;
+	display: block;
+}
+
+.navbar-form {
+	margin: 28px 0px;
 }
 
 /**
@@ -33,4 +141,45 @@ body {
 .container {
 	margin: 0px auto;
 	width: 1170px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.btn {
+	color: white;
+	background-color: #0371fe;
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 700;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 15px;
+	line-height: 1.33333333;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.btn-default {
+	color: white;
+	background-color: #0371fe;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+	color: white;
+	background-color: #024fb3;
+}
+
+.signup-btn {
+	vertical-align: middle;
+	text-align: center;
+	padding: 12px 12px 8px;
 }

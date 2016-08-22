@@ -3,10 +3,43 @@
 	<head>
 		<title><%= title %></title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+		<!--<link href="https://fonts.googleapis.com/css?family=Hind:300,600" rel="stylesheet">--> 
 	</head>
 	<body>
-		<% include ../includes/header.ejs %>
-		<h1><%= message %></h1>
+		<script src="/js/fb-api.js"></script>   
+		<% include ../includes/header.ejs %>	
+		<div id="content">
+			<div id="lead_container" class="container">
+				<div class="row">
+					<div class="col-md-7 mdx">
+						<h1 class="grouptext-tagline feature-header">
+							<div id="grouptext-title">Grouptext</div>
+							Your group messages<br>
+							just got smarter.
+						</h1>
+						<div class="lead">
+							Manage your group messages<br>
+							with cloud-based alerts and tools.
+						</div>
+						<div
+							class="fb-like"
+							data-share="true"
+							data-width="450"
+							data-show-faces="true">
+						</div>
+					</div>
+					<div class="col-md-3 col-md-push-1">
+						<div class="animation-container mbx">
+							<img class="animation-frame" src="images/phone-light.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="feature-block">
+			</div>
+			<% include ../includes/footer.ejs %>
+		</div>
 	</body>
 </html>
