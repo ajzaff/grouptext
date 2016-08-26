@@ -7,7 +7,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.get("/", function(req, res) {
-	res.render("pages/index", { title: "Index Page" });
+	// TODO: render dashboard if logged in, otherwise splash page.
+	if (true) {
+		res.render("pages/dashboard", { title: "Grouptext" });
+	} else {
+		res.render("pages/index", { title: "Grouptext" });
+	}
 });
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
