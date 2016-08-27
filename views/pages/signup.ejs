@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sign Up</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+	</head>
+	<% include ../includes/tiny-header.ejs %>
+	<h1>Sign Up</h1>
+	<form action="/api/v1/user" method="post">
+		<div>Name: <input name="name" type="text"></div>
+		<div>Password: <input name="pass" type="password"></div>
+		<div>Repeat Password: <input name="pass2" type="password"></div>
+		<div><input type="submit" value="Sign Up"></div>
+	</form>
+</html>
