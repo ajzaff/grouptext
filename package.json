@@ -4,9 +4,8 @@
   "description": "A platform for group collaboration",
   "main": "app.js",
   "dependencies": {
-    "async": "^2.0.1",
-    "cassandra-driver": "^3.1.1",
-    "ejs": "^2.5.1"
+    "ejs": "^2.5.1",
+    "express-cassandra": "^1.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
