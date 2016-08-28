@@ -17,7 +17,7 @@ models.setDirectory(path.join(__dirname, "..", "models")).bind({
 			replication_factor: 1
 		},
 		migration: "safe",
-	//	createKeyspace: true
+		createKeyspace: true
 	}
 },
 function(err) {
