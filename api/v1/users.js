@@ -4,9 +4,16 @@ var models = require('express-cassandra');
 
 
 router.get("/", function(req, res) {
-	models.instance.User.findAll(function(err, response) {
-		res.json(response);
-	});
+	models.instance.User.find(
+		{},
+		{select: ['name']},
+		function(err, users) {
+			if (err)
+				res.json({error: err});
+			else
+				res.json(users);
+		}
+	);
 });
 
 
