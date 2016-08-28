@@ -1,7 +1,8 @@
 var models = require("express-cassandra");
+var path = require("path");
 
 
-models.setDirectory(__dirname + "/models").bind({
+models.setDirectory(path.join(__dirname, "..", "models")).bind({
 	clientOptions: {
 		contactPoints: ["127.0.0.1"],
 		protocolOptions: {},
@@ -16,12 +17,14 @@ models.setDirectory(__dirname + "/models").bind({
 			replication_factor: 1
 		},
 		migration: "safe",
-		createKeyspace: true
+	//	createKeyspace: true
 	}
 },
 function(err) {
-	if (err)
+	if (err) {
 		console.error(err.message);
-	else
+		console.error(err.innerErrors);
+	} else {
 		console.log(models.timeuuid());
+	}
 });
