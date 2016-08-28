@@ -1,9 +1,10 @@
 {
   "name": "grouptext",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A platform for group collaboration",
   "main": "app.js",
   "dependencies": {
+    "cassandra-driver": "^3.1.1",
     "ejs": "^2.5.1"
   },
   "scripts": {
