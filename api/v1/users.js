@@ -16,5 +16,17 @@ router.get("/", function(req, res) {
 	);
 });
 
+router.post("/", function(req, res) {
+	var user = new models.instance.User({
+		name: req.query.name
+	});
+	user.save(function(err) {
+		if (err)
+			res.json({error: err});
+		else
+			res.json(user);
+	});
+});
+
 
 module.exports = router;
