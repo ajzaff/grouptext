@@ -1,6 +1,6 @@
 {
   "name": "grouptext",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "A platform for group collaboration",
   "main": "app.js",
   "dependencies": {
