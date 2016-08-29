@@ -18,10 +18,25 @@ router.get("/", function(req, res) {
 	);
 });
 
+router.get("/:uuid", function(req, res) {
+	models.instance.User.findOne(
+		{id: models.uuidFromString(req.params.uuid)},
+		{raw: true},
+		function(err, user) {
+			if (err) {
+				console.error(err);
+				res.json({error: err});
+			} else {
+				res.json(user);
+			}
+		}
+	)
+});
+
 router.post("/", function(req, res) {
-	console.log(String(req.query.email));
+	var uuid = models.uuid();
 	var user = new models.instance.User({
-		id: models.uuid(),
+		id: uuid,
 		name: req.query.name,
 		email: req.query.email
 	});
@@ -30,7 +45,10 @@ router.post("/", function(req, res) {
 			console.error(err);
 			res.json({error: err});
 		} else {
-			res.json({status: "ok", user: user});
+			res.json({
+				status: "ok",
+				uuid: uuid
+			});
 		}
 	});
 });

@@ -34,6 +34,6 @@ module.exports = {
 		}
 	},
 	key: [
-		["id"], "name", "email"
+		["id"], "email"
 	]
 }
