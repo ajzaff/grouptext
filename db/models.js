@@ -16,7 +16,7 @@ models.setDirectory(path.join(__dirname, "..", "models")).bind({
 			class: "SimpleStrategy",
 			replication_factor: 1
 		},
-		migration: "safe",
+		migration: "drop",
 		createKeyspace: true
 	}
 },
