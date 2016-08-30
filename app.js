@@ -17,6 +17,9 @@ app.get("/", function(req, res) {
 app.get("/signup", function(req, res) {
 	res.render("pages/signup");
 });
+app.post("/signup", function(req, res) {
+	res.redirect("/");
+});
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
 	console.log("grouptext listening on port " + port + "!");
