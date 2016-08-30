@@ -1,7 +1,15 @@
 var express = require("express");
 var path = require("path");
 
+
+/* Initialize ORM data models */
+require("./db/models.js");
+
 var app = express();
+
+/* API */
+var api = require("./api/api");
+app.use("/api", api);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
