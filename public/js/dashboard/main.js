@@ -1,0 +1,3 @@
+$(function() {
+	$("#awesomeBar").focus();
+});
