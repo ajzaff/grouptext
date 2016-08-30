@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var config = require("./config");
 
 
 /* Initialize ORM data models */
