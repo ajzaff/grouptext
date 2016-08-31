@@ -1,6 +1,6 @@
 {
   "name": "grouptext",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A platform for group collaboration",
   "main": "app.js",
   "dependencies": {
@@ -13,11 +13,11 @@
     "start": "node app.js"
   },
   "bugs": {
-    "url": "https://github.com/grouptext/grouptext/issues"
+    "url": "https://github.com/gtext/grouptext/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grouptext/grouptext.git"
+    "url": "git+https://github.com/gtext/grouptext.git"
   },
   "keywords": [
     "group",
@@ -25,5 +25,5 @@
   ],
   "author": "Alan J. Zaffetti",
   "license": "ISC",
-  "homepage": "https://github.com/grouptext/grouptext#readme"
+  "homepage": "https://github.com/gtext/grouptext#readme"
 }
