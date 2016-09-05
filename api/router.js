@@ -3,6 +3,7 @@ var path = require("path");
 var router = express.Router();
 var apiUtils = require(path.join(__dirname, "utils"));
 var usersApi = require(path.join(__dirname, "users"));
+var tokensApi = require(path.join(__dirname, "tokens"));
 
 
 router.get("/users", function(req, res) {
@@ -25,6 +26,12 @@ router.get("/users/:uuid", function(req, res) {
 	usersApi.getUserById(req.params.uuid, function(err, resp) {
 		apiUtils.type(res, "v1");
 		res.json(resp || {error: err});
+	});
+});
+
+router.post("/tokens", function(req, res) {
+	res.json({
+		token: tokensApi.createNewToken(req.body.scopes)
 	});
 });
 

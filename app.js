@@ -3,6 +3,7 @@ var path = require("path");
 var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
 var config = require(path.join(__dirname, "config"));
+var bodyParser = require("body-parser");
 
 
 /* Initialize ORM data models */
@@ -10,9 +11,13 @@ require(path.join(__dirname, "db", "models"));
 
 var app = express();
 
+app.use(bodyParser.json()); // application/json
+app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
+
 /* API */
 app.use(expressJWT({ secret: config.secret }).unless({
 	path: [
+		"/api/tokens",
 		/^\/[^\/]*\/?$/,
 		/^\/images\//,
 		/^\/js\//,
