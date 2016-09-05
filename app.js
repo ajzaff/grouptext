@@ -1,6 +1,8 @@
 var express = require("express");
 var path = require("path");
 var config = require("./config");
+var expressJWT = require("express-jwt");
+var jwt = require("jsonwebtoken");
 
 
 /* Initialize ORM data models */
@@ -10,6 +12,9 @@ var app = express();
 
 /* API */
 var api = require("./api/api");
+app.use(expressJWT({ secret: config.secret }).unless({
+	path: []
+}));
 app.use("/api", api);
 
 app.use(express.static(path.join(__dirname, "public")));
