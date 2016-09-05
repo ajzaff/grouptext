@@ -66,8 +66,8 @@ TokenScopes.parse = function(scopes) {
 function TokenApi() {
 }
 
-TokenApi.createNewToken = function(scopes) {
-	return jwt.sign(TokenScopes.parse(scopes), config.secret);
+TokenApi.createNewToken = function(scopes, options) {
+	return jwt.sign(TokenScopes.parse(scopes), options, config.secret);
 }
 
 
