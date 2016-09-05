@@ -1,27 +1,25 @@
 var express = require("express");
 var path = require("path");
-var config = require("./config");
 var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
+var config = require(path.join(__dirname, "config"));
 
 
 /* Initialize ORM data models */
-require("./db/models.js");
+require(path.join(__dirname, "db", "models"));
 
 var app = express();
 
 /* API */
-var api = require("./api/api");
 app.use(expressJWT({ secret: config.secret }).unless({
 	path: [
-		"/",
-		"/signup",
+		/^\/[^\/]*\/?$/,
 		/^\/images\//,
 		/^\/js\//,
 		/^\/stylesheets\//
 	]
 }));
-app.use("/api", api);
+app.use("/api", require(path.join(__dirname, "api", "router")));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
