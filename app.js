@@ -1,15 +1,15 @@
 var express = require("express");
 var path = require("path");
-var config = require("./config");
+var config = require(path.join(__dirname, "config"));
 
 
 /* Initialize ORM data models */
-require("./db/models.js");
+require(path.join(__dirname, "db", "models"));
 
 var app = express();
 
 /* API */
-var api = require("./api/api");
+var api = require(path.join(__dirname, "api", "router"));
 app.use("/api", api);
 
 app.use(express.static(path.join(__dirname, "public")));
