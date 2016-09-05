@@ -17,7 +17,7 @@ function TokenScopes() {
 }
 
 TokenScopes.prototype.give = function(scope, value) {
-	this[scope] |= (value || TokenScopes.READ_BIT);
+	this[scope] |= (value || MASK_BITS.read);
 	return this;
 }
 
@@ -41,6 +41,9 @@ TokenScopes.parse = function(scopes) {
 	var nextMask = undefined;
 	for (i in scopes) {
 		var token = scopes[i];
+		if (!token)
+			// continue if token is empty...
+			continue;
 		var res = token.match(
 			"^(none|create|read|update|delete|write|all)$");
 		if (res) {
@@ -67,7 +70,7 @@ function TokenApi() {
 }
 
 TokenApi.createNewToken = function(scopes, options) {
-	return jwt.sign(TokenScopes.parse(scopes), options, config.secret);
+	return jwt.sign(TokenScopes.parse(scopes), config.secret, options);
 }
 
 
