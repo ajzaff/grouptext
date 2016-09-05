@@ -13,7 +13,13 @@ var app = express();
 /* API */
 var api = require("./api/api");
 app.use(expressJWT({ secret: config.secret }).unless({
-	path: []
+	path: [
+		"/",
+		"/signup",
+		/^\/images\//,
+		/^\/js\//,
+		/^\/stylesheets\//
+	]
 }));
 app.use("/api", api);
 
