@@ -35,7 +35,10 @@ app.use("/api", require(path.join(__dirname, "api", "router")));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", [
+	path.join(__dirname, "views"),
+	path.join(__dirname, "public")
+]);
 app.get("/", function(req, res) {
 	// TODO: render dashboard if logged in, otherwise splash page.
 	if (false) {
@@ -51,9 +54,15 @@ app.post("/signup", function(req, res) {
 	res.redirect("/");
 });
 
-// app.use(function(err, req, res, next) {
-// 	res.json(err);
-// });
+/* error handler */
+app.use(function(err, req, res, next) {
+	res.status(err.status).render(String(err.status));
+});
+
+/* 404 */
+app.use(function(req, res) {
+	res.status(404).render("404");
+});
 
 app.listen(config.port, function() {
 	console.log("grouptext listening on port " + config.port + "!");
