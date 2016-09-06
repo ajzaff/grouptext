@@ -4,12 +4,19 @@ var expressJWT = require("express-jwt");
 var jwt = require("jsonwebtoken");
 var config = require(path.join(__dirname, "config"));
 var bodyParser = require("body-parser");
+var logger = require("morgan");
 
 
 /* Initialize ORM data models */
 require(path.join(__dirname, "db", "models"));
 
 var app = express();
+
+/* logging settings */
+app.settings.env = config.env;
+if (app.settings.env == "production")
+	app.disable("errors");
+app.use(logger("dev"));
 
 app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
@@ -43,7 +50,11 @@ app.get("/signup", function(req, res) {
 app.post("/signup", function(req, res) {
 	res.redirect("/");
 });
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
-	console.log("grouptext listening on port " + port + "!");
+
+app.use(function(err, req, res, next) {
+	res.status()
+});
+
+app.listen(config.port, function() {
+	console.log("grouptext listening on port " + config.port + "!");
 });
