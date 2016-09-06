@@ -3,75 +3,56 @@ var jwt = require("jsonwebtoken");
 var config = require(path.join(__dirname, "..", "config"));
 
 
-var MASK_BITS = {
-	none: 0,
-	create: 1,
-	read: 2,
-	update: 4,
-	delete: 8,
-	write: 13,
-	all: 15
-};
-
 function TokenScopes() {
 }
 
-TokenScopes.prototype.give = function(scope, value) {
-	this[scope] |= (value || MASK_BITS.read);
-	return this;
-}
-
-TokenScopes.prototype.all = function(scope) {
-	this[scope] = 15; // apply all scopes.
-	return this;
-}
-
-TokenScopes.prototype.none = function(scope) {
-	this[scope] = 0;
-	return this;
-}
-
-TokenScopes.prototype.toJson = function() {
-	return JSON.stringify(this);
-}
-
 TokenScopes.parse = function(scopes) {
+	if (!scopes)
+		return [];
 	scopes = scopes.split(/\s+/);
-	var tokenScopes = new TokenScopes();
-	var nextMask = undefined;
-	for (i in scopes) {
-		var token = scopes[i];
-		if (!token)
-			// continue if token is empty...
-			continue;
-		var res = token.match(
-			"^(none|create|read|update|delete|write|all)$");
-		if (res) {
-			if (nextMask == 0 || nextMask == 15)
-				throw "illegal state: mask is " + nextMask;
-			nextMask |= MASK_BITS[res[1]];
-		} else if (parseInt(token)) {
-			var mod = parseInt(token);
-			if (mod < 0 || mod > 15)
-				throw "illegal state: mod out of range " + mod;
-			nextMask |= mod;
-		} else {
-			tokenScopes.give(token, nextMask);
-			nextMask = undefined;
-		}
-	}
-	if (nextMask)
-		throw "illegal state: expected scope after " + nextMask;
-	console.log(tokenScopes);
+	var tokenScopes = [];
+	scopes.forEach(function(scope) {
+		if (!tokenScopes.includes(scope))
+			tokenScopes.push(scope);
+	});
 	return tokenScopes;
+}
+
+TokenScopes.registerScopedRoute = function(method, path, scope) {
+	var tmp = TokenScopes.routes;
+	TokenScopes.routes = tmp || {};
+	
+	tmp = TokenScopes.routes[method];
+	TokenScopes.routes[method] = tmp || {};
+	
+	tmp = TokenScopes.routes[method][path];
+	tmp = TokenScopes.routes[method][path] = tmp || [];
+	if (!tmp.includes(scope))
+		TokenScopes.routes[method][path].push(scope);
 }
 
 function TokenApi() {
 }
 
 TokenApi.createNewToken = function(scopes, options) {
-	return jwt.sign(TokenScopes.parse(scopes), config.secret, options);
+	return jwt.sign({scope: TokenScopes.parse(scopes)},
+		config.secret,
+		options);
 }
+
+TokenApi.hasScope = function(method, path, token) {
+	if (!TokenScopes.routes)
+		return false;
+	if (!TokenScopes.routes[method])
+		return false;
+	if (!TokenScopes.routes[method][path])
+		return false;
+	return TokenScopes.routes[method][path].find(function(scope) {
+		return token.scope.includes(scope);
+	}) !== undefined;
+}
+
+TokenApi.Scopes = TokenScopes;
 
 
 module.exports = TokenApi;

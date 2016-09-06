@@ -31,7 +31,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.get("/", function(req, res) {
 	// TODO: render dashboard if logged in, otherwise splash page.
-	if (true) {
+	if (false) {
 		res.render("pages/dashboard", { title: "Grouptext" });
 	} else {
 		res.render("pages/index", { title: "Grouptext" });
