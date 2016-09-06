@@ -52,6 +52,7 @@ new apiUtils.Route(router, "users", "/users/:uuid")
 	
 new apiUtils.Route(router, "tokens")
 	.post(":write", function(req, res) {
+		apiUtils.type(res, "v1");
 		res.json({
 			token: tokenApi.createNewToken(req.body.scope)
 		});
