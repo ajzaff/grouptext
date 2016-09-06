@@ -51,9 +51,9 @@ app.post("/signup", function(req, res) {
 	res.redirect("/");
 });
 
-app.use(function(err, req, res, next) {
-	res.status()
-});
+// app.use(function(err, req, res, next) {
+// 	res.json(err);
+// });
 
 app.listen(config.port, function() {
 	console.log("grouptext listening on port " + config.port + "!");
