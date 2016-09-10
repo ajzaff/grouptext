@@ -14,14 +14,17 @@ router.use(function(req, res, next) {
 		// first, verify token
 		var token = auth.match(/Bearer\s+(.*)/)[1];
 		if (!(token=jwt.verify(token, config.secret))) {
-			res.sendStatus(401);
+			res.render("401");
 			return;
 		}
 		// finally, check token scope
 		if (!tokenApi.hasScope(req.method, req.path, token)) {
-			res.sendStatus(401);
+			res.render("401");
 			return;
 		}
+	} else {
+		res.render("401");
+		return;
 	}
 	next();
 })
