@@ -15,15 +15,6 @@ app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded
 
 /* API */
-// app.use(expressJWT({ secret: config.secret }).unless({
-// 	path: [
-// 		"/api/tokens",
-// 		/^\/[^\/]*\/?$/,
-// 		/^\/images\//,
-// 		/^\/js\//,
-// 		/^\/stylesheets\//
-// 	]
-// }));
 app.use("/api", require(path.join(__dirname, "api", "router")));
 
 app.use(express.static(path.join(__dirname, "public")));
