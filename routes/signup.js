@@ -1,5 +1,7 @@
+var path = require("path");
 var express = require("express");
 var router = express.Router();
+var tokenApi = require(path.join(__dirname, "..", "api", "tokens"));
 
 
 router.get("/", function(req, res) {
@@ -7,7 +9,16 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-	res.redirect("/");
+	if (!req.body.name) {
+		res.render("pages/signup", {
+			message: {
+				type: "error",
+				content: "name is required."
+			}
+		});
+	} else {
+		res.redirect("/");
+	}
 });
 
 

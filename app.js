@@ -42,6 +42,9 @@ app.use("/", require(path.join(__dirname, "routes", "index")));
 
 /* error handler */
 app.use(function(err, req, res, next) {
+	if (app.settings.env == "production") {
+		err.status = err.status || 500;
+	}
 	res.status(err.status).render(String(err.status));
 });
 

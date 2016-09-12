@@ -24,7 +24,5 @@ function(err) {
 	if (err) {
 		console.error(err.message);
 		console.error(err.innerErrors);
-	} else {
-		console.log(models.timeuuid());
 	}
 });
