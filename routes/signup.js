@@ -16,6 +16,27 @@ router.post("/", function(req, res) {
 				content: "name is required."
 			}
 		});
+	} else if (!req.body.pass) {
+		res.render("pages/signup", {
+			message: {
+				type: "error",
+				content: "password is required."
+			}
+		});
+	} else if (!req.body.pass2) {
+		res.render("pages/signup", {
+			message: {
+				type: "error",
+				content: "repeated password is required."
+			}
+		});
+	} else if (req.body.pass !== req.body.pass2) {
+		res.render("pages/signup", {
+			message: {
+				type: "error",
+				content: "passwords do not match."
+			}
+		});
 	} else {
 		res.redirect("/");
 	}

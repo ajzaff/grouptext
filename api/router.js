@@ -8,26 +8,8 @@ var jwt = require("jsonwebtoken");
 var config = require(path.join(__dirname, "..", "config"))
 
 
-router.use(function(req, res, next) {
-	var auth;
-	if (auth=req.get("Authorization")) {
-		// first, verify token
-		var token = auth.match(/Bearer\s+(.*)/)[1];
-		if (!(token=jwt.verify(token, config.secret))) {
-			res.render("401");
-			return;
-		}
-		// finally, check token scope
-		if (!tokenApi.hasScope(req.method, req.path, token)) {
-			res.render("401");
-			return;
-		}
-	} else {
-		res.render("401");
-		return;
-	}
-	next();
-})
+/* Use the authorization parser */
+router.use(tokenApi.authParser);
 
 new apiUtils.Route(router, "users")
 	.get(":read", function(req, res) {

@@ -52,6 +52,27 @@ TokenApi.hasScope = function(method, path, token) {
 	}) !== undefined;
 }
 
+TokenApi.authParser = function(req, res, next) {
+	var auth;
+	if (auth=req.get("Authorization")) {
+		// first, verify token
+		var token = auth.match(/Bearer\s+(.*)/)[1];
+		if (!(token=jwt.verify(token, config.secret))) {
+			res.status(401).render("401");
+			return;
+		}
+		// finally, check token scope
+		if (!tokenApi.hasScope(req.method, req.path, token)) {
+			res.status(401).render("401");
+			return;
+		}
+	} else {
+		res.status(401).render("401");
+		return;
+	}
+	next();
+}
+
 TokenApi.Scopes = TokenScopes;
 
 
