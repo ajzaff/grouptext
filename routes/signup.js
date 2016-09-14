@@ -2,6 +2,7 @@ var path = require("path");
 var express = require("express");
 var router = express.Router();
 var tokenApi = require(path.join(__dirname, "..", "api", "tokens"));
+var usersApi = require(path.join(__dirname, "..", "api", "users"));
 
 
 router.get("/", function(req, res) {
@@ -9,36 +10,46 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-	if (!req.body.name) {
+	if (!req.body.name)
+		err = "name is required.";
+	else if (!req.body.pass)
+		err = "password is required.";
+	else if (!req.body.pass2)
+		err = "repeated password is required.";
+	else if (req.body.pass !== req.body.pass2)
+		err = "passwords do not match.";
+	if (err) {
 		res.render("pages/signup", {
 			message: {
 				type: "error",
-				content: "name is required."
-			}
-		});
-	} else if (!req.body.pass) {
-		res.render("pages/signup", {
-			message: {
-				type: "error",
-				content: "password is required."
-			}
-		});
-	} else if (!req.body.pass2) {
-		res.render("pages/signup", {
-			message: {
-				type: "error",
-				content: "repeated password is required."
-			}
-		});
-	} else if (req.body.pass !== req.body.pass2) {
-		res.render("pages/signup", {
-			message: {
-				type: "error",
-				content: "passwords do not match."
+				content: err
+			},
+			form: {
+				name: req.body.name
 			}
 		});
 	} else {
-		res.redirect("/");
+		var callback = function(err, user) {
+			if (err) {
+				res.render("pages/signup", {
+					message: {
+						type: "error",
+						content: "user already exists"
+					},
+					form: {
+						name: req.body.name
+					}
+				});
+			} else {
+				res.cookie("id_gtext", "");
+				res.redirect("/");
+			}
+		};
+		usersApi.createNewUser(
+			req.body.name,
+			req.body.email,
+			callback
+		);
 	}
 });
 
